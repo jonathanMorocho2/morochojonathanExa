@@ -9,7 +9,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import ups.edu.ec.entidades.Bodega;
 
-
 /**
  *
  * @author USUARIO

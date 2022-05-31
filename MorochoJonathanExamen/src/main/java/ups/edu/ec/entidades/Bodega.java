@@ -4,7 +4,12 @@
  */
 package ups.edu.ec.entidades;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Transient;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +25,41 @@ public class Bodega implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    
     private int id;
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "Bodega")
+    private Set<Bodega> bodegas = new HashSet<Bodega>();
+    @Transient
+    
+    private String nombre;
+    private String ciudad;
+
+    public Bodega() {
+    }
+
+    public Bodega(int id, String nombre, String ciudad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.ciudad = ciudad;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+ 
+    
 
     public int getId() {
         return id;
